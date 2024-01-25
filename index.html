@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <form action="">
+        <input type="text" id="plain" placeholder="Enter plain text">
+        <input type="number" id="m" placeholder="Enter m">
+        <input type="number" id="n" placeholder="Enter n">
+        <input type="text" name="private" id="private" placeholder="Private|Contoh : 3,5,9,19,37">
+        <div>
+            <button type="button" id="submit" onclick="get()">Encrypt</button>
+        </div>      
+    </form>
+
+  <div id="consoleLogs"></div>
+
+    <script src="script.js"></script>
+    <script>
+        function appendToConsoleLogs(message) {
+            var consoleLogsDiv = document.getElementById("consoleLogs");
+            consoleLogsDiv.innerHTML += "<p>" + message + "</p>";
+        }
+
+        function get() {
+            var plain = document.getElementById("plain").value;
+            var m = document.getElementById("m").value;
+            var n = document.getElementById("n").value;
+            var private = document.getElementById("private").value;
+            var numbersArray = private.split(',').map(Number);
+            var resultSpan = document.getElementById("hasil");
+            document.getElementById("consoleLogs").innerHTML = "";
+            var originalConsoleLog = console.log;
+            function logToConsole(message) {
+                originalConsoleLog(message);  
+                appendToConsoleLogs(message);
+            }
+            console.log = logToConsole;
+            let result = knapsack(plain, m, n, numbersArray);
+            console.log = originalConsoleLog;
+        }
+    </script>
+</body>
+</html>

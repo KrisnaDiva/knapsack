@@ -1,0 +1,19 @@
+body{
+    background-color: beige;
+    text-align: center;
+}
+p{
+    font-size: 15px;
+}
+form input{
+    padding: 3px;
+    font-size: 14px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border-color: black ;
+}
+button{
+    margin-top: 10px;
+    background-color :powderblue;
+    border-radius: 5px;
+}
